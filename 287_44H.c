@@ -55,3 +55,16 @@ void showDefaulters() {
 
     fclose(fp);
 }
+// 11. Change Password
+void changePassword() {
+    char newPass[20];
+
+    printf("Enter New Password: ");
+    scanf("%s", newPass);
+
+    FILE *fp = fopen("password.txt", "w");
+    fprintf(fp, "%s", newPass);
+    fclose(fp);
+
+    printf("Password Changed Successfully.\n");
+}
