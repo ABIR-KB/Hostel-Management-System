@@ -1,10 +1,30 @@
+/**
+ * @file data_operations.c
+ * @brief Handles searching, editing, and deleting student records.
+ * @details This file implements the Read, Update, and Delete (CRUD) operations 
+ * for the hostel management system. It uses a temporary file approach to 
+ * modify the persistent "students.txt" database.
+ */
+
 #include <stdio.h>
 #include <string.h>
 
+/**
+ * @brief The main database file name.
+ */
 #define FILE_NAME "students.txt"
+
+/**
+ * @brief Temporary file used during update and delete operations.
+ */
 #define TEMP "temp.txt"
 
-// 4. Search Student
+/**
+ * @brief Searches for a student by their unique ID.
+ * * @details Prompts the user to enter an ID. The function then scans the database 
+ * file line by line. If a matching ID is found, it prints the student's 
+ * full details (Name, ID, Phone, Room, Fees).
+ */
 void searchStudent() {
     FILE *fp = fopen(FILE_NAME, "r");
     char line[200], id[20];
@@ -29,7 +49,15 @@ void searchStudent() {
     fclose(fp);
 }
 
-// 5. Edit Student
+/**
+ * @brief Modifies an existing student's record.
+ * * @details This function works by:
+ * 1. Opening the original file for reading and a temporary file for writing.
+ * 2. Copying all data from original to temp.
+ * 3. When the matching ID is found, it prompts the user for new Phone and Room data 
+ * instead of copying the old data.
+ * 4. Finally, it deletes the original file and renames the temp file to "students.txt".
+ */
 void editStudent() {
     FILE *fp = fopen(FILE_NAME, "r");
     FILE *temp = fopen(TEMP, "w");
@@ -62,7 +90,12 @@ void editStudent() {
     if(found) printf("Student Updated.\n");
 }
 
-// 6. Delete Student
+/**
+ * @brief Deletes a student's record from the database.
+ * * @details Similar to editStudent, this function copies data from the original
+ * file to a temporary file. However, if the Student ID matches the input ID, 
+ * that record is **skipped** (not written to the temp file), effectively removing it.
+ */
 void deleteStudent() {
     FILE *fp = fopen(FILE_NAME, "r");
     FILE *temp = fopen(TEMP, "w");
