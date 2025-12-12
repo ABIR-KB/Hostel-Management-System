@@ -1,17 +1,30 @@
+/**
+ * @file data_entry.c
+ * @brief Handles student data structure and entry functions for the Hostel Management System.
+ * @details This file contains the main Student structure definition and functions for 
+ * logging in, adding new students, and viewing all records.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+/**
+ * @def FILE_NAME
+ * @brief The name of the database file used to store student records.
+ */
 #define FILE_NAME "students.txt"
 
 typedef struct {
-    char name[100];
-    char id[20];
-    char phone[20];
-    char room[20];
-    char fees[20];
+    char name[100]; /**< Full name of the student. */
+    char id[20];    /**< Unique Student ID number. */
+    char phone[20]; /**< Contact phone number. */
+    char room[20];  /**< Assigned room number. */
+    char fees[20];  /**< Fee payment status (e.g., "Paid", "Pending"). */
 } Student;
-
+/**
+ * @brief Authenticates the system user.
+ * * Prompts the user for a username and password. 
+ * @note Currently, this function does not verify the input against a database (placeholder).
+ */
 void secureLogin() {
     char input[20], username[20];
     printf("Enter system UserName: ");
@@ -20,7 +33,12 @@ void secureLogin() {
     scanf("%s", input);
 
 }
-
+/**
+ * @brief Adds a new student to the database.
+ * * Captures student details (Name, ID, Phone, Room) from the user
+ * and appends them to the "students.txt" file. 
+ * Default fee status is set to "Pending".
+ */
 
 void addStudent() {
     Student s;
@@ -40,7 +58,11 @@ void addStudent() {
     printf("Student Added Successfully.\n");
 }
 
-
+/**
+ * @brief Displays all students currently recorded in the system.
+ * * Reads the "students.txt" file line by line and prints the details 
+ * in a formatted table.
+ */
 
 void viewAll() {
     FILE *fp = fopen(FILE_NAME, "r");
