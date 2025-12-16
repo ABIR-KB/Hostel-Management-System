@@ -22,16 +22,18 @@ After obtaining the source code, you can compile the project using a C compiler.
   on mac:
   gcc main.c
 ```
+```http
+ On Windows:
+  gcc -o .exe main.c
+```
+
 #### Running the System
 Execute the compiled file from your terminal:
 ```http
  On Mac
   ./a.out
 ```
-```http
- On Windows:
-  gcc -o .exe main.c
-```
+
 ```http
  On Windows:
   .exe
