@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include "hostel.h"
 
 #define FILE_NAME "students.csv"
 

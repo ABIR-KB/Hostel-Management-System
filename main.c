@@ -13,6 +13,8 @@ int main() {
         printf("\n--- WELCOME TO HOSTEL MANAGEMENT SYSTEM ---\n");
         printf("1. Login\n");
         printf("2. Register\n");
+        printf("3. View Students Details\n");
+        printf("4. Search Student\n");
         printf("0. Exit System\n");
         printf("Enter choice: ");
         
@@ -28,6 +30,12 @@ int main() {
                 break;
             case 2:
                 userRegistration();
+                break;
+            case 3:
+                viewAll();
+                break;
+            case 4:
+                searchStudent();
                 break;
             case 0:
                 printf("Exiting System...\n");
